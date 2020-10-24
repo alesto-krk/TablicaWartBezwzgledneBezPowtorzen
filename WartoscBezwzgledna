@@ -1,0 +1,62 @@
+import static java.lang.StrictMath.abs;
+
+public class WartoscBezwzgledna {
+
+    public static void main(String[] args) {
+
+        //dane wejsciowe
+        int tablica[] = {-654,-71,71,71,-22};
+        System.out.println("Wartości tablicy wejściowej:");
+        for (int i=0; i<tablica.length; i++)
+            System.out.print(tablica[i] + " ");
+
+
+        //tablica wartosci bezwzglednych
+        int tablBezwzgledne[] = new int[5];
+        System.out.println("\nWartości bezwzgledne:");
+        for (int i=0; i<tablica.length; i++) {
+            tablBezwzgledne[i] = abs(tablica[i]);
+            System.out.print(tablBezwzgledne[i] + " ");
+        }
+
+
+        //tablica bez powtorzen
+        int i,j;
+        int tablicaBezPowtorzen[] = new int[5];
+
+        tablicaBezPowtorzen[0] = tablBezwzgledne[0];
+        for(i=0; i<tablicaBezPowtorzen.length; i++)
+        {
+        for(j=0; i>j; j++){
+        if (tablBezwzgledne[i]==tablBezwzgledne[j])
+        {tablicaBezPowtorzen[i]=0;
+        break;}
+        else
+        tablicaBezPowtorzen[i]=tablBezwzgledne[i];
+        } }
+
+        System.out.println("\nWartości tablicy bez powtórzeń to:");
+        for (i=0; i<tablicaBezPowtorzen.length; i++)
+            System.out.print(tablicaBezPowtorzen[i] + " ");
+
+
+        //nowa krotka tablica
+        int ile = 0;
+        for (int k=0; k<tablicaBezPowtorzen.length; k++){
+            if (tablicaBezPowtorzen[k]!=0)
+                ile++;
+        }
+        //System.out.println(ile);
+        int krotkaTablica[] = new int[ile];
+        for (int k=0, l=0; k<tablicaBezPowtorzen.length; k++){
+            if (tablicaBezPowtorzen[k]!=0){
+                krotkaTablica[l]=tablicaBezPowtorzen[k];
+                l++;}
+                }
+
+        System.out.println("\nWartości krótkiej tablicy to:");
+        for (i=0; i<krotkaTablica.length; i++)
+            System.out.print(krotkaTablica[i] + " ");
+
+    }
+}
